@@ -1,5 +1,6 @@
-const apiBaseURL = "http://localhost:5000/api/images";
-const apiUserURL = "http://localhost:5000/accounts/index/id";
+const baseUrl = "http://localhost:5000";
+const apiBaseURL = baseUrl + "/api/images";
+const apiUserURL = baseUrl +  "/accounts/index/id";
 function HEAD(successCallBack, errorCallBack) {
     $.ajax({
         url: apiBaseURL,
@@ -83,7 +84,7 @@ function DELETE_ALL(id, errorCallBack) {
 }
 function GETAccount(data, successCallBack, errorCallBack) {
     $.ajax({
-        url: "http://localhost:5000/token",
+        url: baseUrl + "/token",
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(data),
@@ -93,7 +94,7 @@ function GETAccount(data, successCallBack, errorCallBack) {
 }
 function POSTAccount(data) {
     $.ajax({
-        url: "http://localhost:5000/accounts/register",
+        url: baseUrl + "/accounts/register",
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(data),
@@ -106,7 +107,7 @@ function POSTAccount(data) {
 }
 function PUTAccount(data, token) {
     $.ajax({
-        url: "http://localhost:5000/accounts/modify",
+        url: baseUrl + "/accounts/modify",
         type: 'PUT',
         contentType: 'application/json',
         headers: { "Authorization": "Bearer " + token},
@@ -120,7 +121,7 @@ function PUTAccount(data, token) {
 }
 function VERIFYAccount(data) {
     $.ajax({
-        url: "http://localhost:5000/accounts/verify?id=" + data.Id + "&code=" + data.Code,
+        url: baseUrl + "/accounts/verify?id=" + data.Id + "&code=" + data.Code,
         type: 'GET',
         contentType: 'application/json',
         data: JSON.stringify(data),
@@ -130,7 +131,7 @@ function VERIFYAccount(data) {
 }
 function GETAvatar(id, successCallBack, errorCallBack) {
     $.ajax({
-        url: "http://localhost:5000/accounts/index/" + id,
+        url: baseUrl + "/accounts/index/" + id,
         type: 'GET',
         success: data => { successCallBack(data); },
         error: function (jqXHR) { errorCallBack(jqXHR.status) }
@@ -138,7 +139,7 @@ function GETAvatar(id, successCallBack, errorCallBack) {
 }
 function GETLogout(errorCallBack) {
     $.ajax({
-        url: "http://localhost:5000/accounts/logout",
+        url: baseUrl + "/accounts/logout",
         type: 'GET',
         success: data => { },
         error: function (jqXHR) { errorCallBack(jqXHR.status) }
@@ -147,7 +148,7 @@ function GETLogout(errorCallBack) {
 function GETRemove(data, token, errorCallBack) //marche pas le remove
 {
     $.ajax({
-        url: "http://localhost:5000/accounts/remove/" + data,
+        url: baseUrl + "/accounts/remove/" + data,
         type: 'GET',
         headers: { "Authorization": "Bearer " + token},
         success: data => { },
@@ -156,7 +157,7 @@ function GETRemove(data, token, errorCallBack) //marche pas le remove
 }
 function GETUser_ID(id, successCallBack, errorCallBack) {
     $.ajax({
-        url: "http://localhost:5000/api/accounts/" + id,
+        url: baseUrl + "/api/accounts/" + id,
         type: 'GET',
         success: data => { successCallBack(data); },
         error: function (jqXHR) { errorCallBack(jqXHR.status) }
