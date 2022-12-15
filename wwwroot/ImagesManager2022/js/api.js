@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:5000";
+const baseUrl = "https://huet-paradis-pfi.glitch.me";
 const apiBaseURL = baseUrl + "/api/images";
 const apiUserURL = baseUrl +  "/accounts/index/id";
 function HEAD(successCallBack, errorCallBack) {
